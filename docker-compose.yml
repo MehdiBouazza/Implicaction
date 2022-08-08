@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'implicaction'
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - my-db:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "9030:8080"
+
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+      - EDGE_PORT=4566
+      - SERVICES=s3
+    ports:
+      - "4566-4583:4566-4583"
+    expose:
+      - "4566"
+    volumes:
+      - localstack:/tmp/localstack
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+volumes:
+  my-db:
+  localstack:

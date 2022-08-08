@@ -1,0 +1,36 @@
+# db properties
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/implicaction
+    username: root
+    password: password
+
+  mail:
+    host: smtp.mailtrap.io
+    port: 2525
+    username: 5c354372a1d5da
+    password: 6b3338fa1cc8b9
+    protocol: smtp
+
+jwt:
+  key_store:
+    file: /implicaction.jks
+    name: implicaction
+    password: .fxG3KPB.
+
+app:
+  url: http://localhost:8080
+  contact:
+    mail: contact@implicaction.eu
+
+cloud:
+  aws:
+    credentials:
+      access-key: tata
+      secret-key: titi
+    stack:
+      auto: false
+    s3:
+      endpoint: http://127.0.0.1:4566
+      region: eu-west-2

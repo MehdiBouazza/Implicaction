@@ -1,0 +1,147 @@
+@import "src/assets/variables";
+@import "src/assets/ui";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.background-transparent {
+  &:hover {
+    background: transparent;
+  }
+}
+
+.secondary-on-hover:hover {
+  color: $secondary;
+}
+
+.info-on-hover:hover {
+  color: $info;
+}
+
+.danger-on-hover:hover {
+  color: $danger;
+}
+
+.success-on-hover:hover {
+  color: $success;
+}
+
+.overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-light-gray {
+  color: $light-gray;
+}
+
+body {
+  background-color: $primary-bg-color;
+  color: $light-gray;
+}
+
+button .icon {
+  width: 18px;
+  height: 18px;
+}
+
+h2 {
+  font-weight: bold;
+  font-style: normal;
+  font-family: Open Sans, Arial, serif;
+  color: $primary;
+}
+
+h3 {
+  font: normal bold 18px 'Open Sans', Arial, serif;
+  line-height: 25px;
+  color: $secondary;
+}
+
+h4 {
+  font: normal 500 18px Roboto, Arial, serif;
+  line-height: 21px;
+  color: $secondary;
+}
+
+p {
+  font: normal 16px Roboto, 'Arial', serif;
+  line-height: 19px;
+}
+
+.date-text {
+  font: normal 600 16px 'Open Sans', 'Arial', serif;
+  line-height: 22px;
+  align-items: center;
+  color: $light-gray;
+}
+
+.description-color {
+  color: $secondary;
+}
+
+p-calendar span {
+  display: flex !important;
+}
+
+textarea, input {
+  &:hover {
+    border-color: $info !important;
+  }
+}
+
+.p-dropdown.p-component {
+  border: 1px solid #ced4da !important;
+
+  &.no-outline {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  &:hover {
+    border-color: $info !important;
+  }
+}
+
+.theme-primary {
+  color: $primary !important;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.btn-check:focus + .btn, .btn:focus {
+  box-shadow: none;
+}
+
+.icon {
+  width: 50px;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .p-sidebar-right {
+    width: 100vw !important;
+  }
+}
+
+.home-card-border {
+  border: 1px solid #e2e2e2;
+
+  &:hover {
+    border: 1px solid #cdcdcd;
+  }
+}

@@ -1,0 +1,54 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:${DB_URI}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+
+
+  mail:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    username: ${SMTP_USER}
+    password: ${SMTP_PASS}
+    protocol: smtp
+  application:
+    name: Implicaction
+
+jwt:
+  expiration_time: 900000
+  key_store:
+    type: JKS
+    file: ${KS_PATH}
+    name: ${KS_NAME}
+    password: ${KS_PASSWORD}
+
+app:
+  url: ${APP_URL}
+  contact:
+    mail: ${CONTACT_EMAIL}
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    stack:
+      auto: false
+    s3:
+      region: ${AWS_REGION}
+

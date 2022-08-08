@@ -1,0 +1,23 @@
+@import "src/assets/variables";
+
+::ng-deep {
+  .last-element .job-card-container {
+    border: none !important;
+  }
+}
+
+.no-outline {
+  border: hidden !important;
+}
+
+.no-outline:focus {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.spinner {
+  height: 50vh;
+}

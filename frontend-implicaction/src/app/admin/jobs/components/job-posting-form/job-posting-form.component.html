@@ -1,0 +1,177 @@
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="formJob"
+>
+  <div class="form-floating mb-4">
+    <input
+      [ngClass]="{'ng-invalid ng-touched': (isSubmitted || formJob.controls['title'].touched) && formJob.controls['title'].errors}"
+      class="form-control form-control-lg px-4"
+      formControlName="title"
+      id="titleInput"
+      placeholder="title"
+    />
+    <label
+      class="form-label px-4"
+      for="titleInput"
+    >
+      Nom de l'offre
+    </label>
+    <div
+      *ngIf="(isSubmitted || formJob.controls['title'].touched) && formJob.controls['title'].errors"
+      class="text-danger"
+    >
+      Vous devez fournir un intitulé d'offre.
+    </div>
+  </div>
+  <div class="form-floating mb-4">
+    <input
+      [ngClass]="{'ng-invalid ng-touched': (isSubmitted || formJob.controls['location'].touched) && formJob.controls['location'].errors}"
+      class="form-control form-control-lg px-4"
+      formControlName="location"
+      id="locationInput"
+      placeholder="location"
+    />
+    <label
+      class="form-label px-4"
+      for="locationInput"
+    >
+      Localisation de l'offre
+    </label>
+    <div
+      *ngIf="(isSubmitted || formJob.controls['location'].touched) && formJob.controls['location'].errors"
+      class="text-danger"
+    >
+      Vous devez fournir une localisation pour cette offre.
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-floating mb-4 col-6">
+      <input
+        [ngClass]="{
+        'ng-invalid ng-touched': (isSubmitted || formJob.controls['salary'].touched) && formJob.controls['salary'].errors
+        }"
+        class="form-control form-control-lg px-4"
+        formControlName="salary"
+        id="salaryInput"
+        placeholder="salary"
+      />
+      <label
+        class="form-label px-4"
+        for="salaryInput"
+      >
+        Salaire de l'offre
+      </label>
+      <div
+        *ngIf="(isSubmitted || formJob.controls['salary'].touched) && formJob.controls['salary'].errors"
+        class="text-danger"
+      >
+        Vous devez fournir le salaire de cette offre
+      </div>
+    </div>
+    <div class="form-floating col-6">
+      <div class="row">
+        <div class="col-12">
+          <p-dropdown
+            [options]="contracts"
+            emptyMessage="Aucun contrat"
+            formControlName="contractType"
+            optionLabel="label"
+            optionValue="code"
+            placeholder="Sélectionnez le type de contrat"
+            required="true"
+            styleClass="w-100 custom-select form-select-lg"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div
+        *ngIf="(isSubmitted || formJob.controls['contractType'].touched) && formJob.controls['contractType'].errors"
+        class="text-danger"
+      >
+        Vous devez fournir un type de contrat pour cette offre
+      </div>
+    </div>
+  </div>
+  <div class="form-floating col-12 mb-4">
+    <div class="row">
+      <div class="col-12">
+        <p-dropdown
+          [options]="businessSectors"
+          emptyMessage="Aucun secteur d'activité"
+          formControlName="businessSector"
+          optionLabel="label"
+          optionValue="code"
+          placeholder="Sélectionnez le secteur d'activité"
+          required="true"
+          styleClass="w-100 custom-select form-select-lg"
+        >
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div
+      *ngIf="(isSubmitted || formJob.controls['businessSector'].touched) && formJob.controls['businessSector'].errors"
+      class="text-danger"
+    >
+      Vous devez fournir un secteur d'activités pour cette offre
+    </div>
+  </div>
+  <div class="form-floating">
+    <p-dropdown
+      [options]="companies"
+      emptyMessage="Aucune entreprise"
+      formControlName="company"
+      optionLabel="name"
+      placeholder="Sélectionnez l'entreprise"
+      required="true"
+      styleClass="w-100 custom-select form-select-lg"
+    >
+    </p-dropdown>
+    <div
+      *ngIf="(isSubmitted || formJob.controls['company'].touched) && formJob.controls['company'].errors"
+      class="text-danger"
+    >
+      Vous devez fournir une entreprise liée à cette offre
+    </div>
+  </div>
+
+  <div class="my-2">
+    <p-editor
+      [style]="{'height':'200px'}"
+      formControlName="shortDescription"
+      placeholder="Description Courte"
+    >
+    </p-editor>
+
+    <div
+      *ngIf="(isSubmitted || formJob.controls['shortDescription'].touched) && formJob.controls['shortDescription'].errors"
+      class="text-danger"
+    >
+      Vous devez fournir une description pour cette offre
+    </div>
+  </div>
+
+  <div class="form-floating mb-4">
+    <p-editor
+      [style]="{'height':'200px'}"
+      formControlName="description"
+      placeholder="Description"
+    >
+    </p-editor>
+    <div
+      *ngIf="(isSubmitted || formJob.controls['description'].touched) && formJob.controls['description'].errors"
+      class="text-danger"
+    >
+      Vous devez fournir une description pour cette offre
+    </div>
+  </div>
+  <div class="d-flex justify-content-center sidebar-options">
+    <button
+      class="btn btn-primary w-50"
+      type="submit"
+    >
+      Enregistrer
+    </button>
+  </div>
+</form>
