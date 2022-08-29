@@ -42,8 +42,8 @@ jobs:
       - name: Push db
         run: |
           docker image tag ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-db:latest \
-          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-db:${{ steps.previoustag.outputs.tag }}
+          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-db:latest
       - name: Push app
         run: |
           docker image tag ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-app:latest \
-          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-app:${{ steps.previoustag.outputs.tag }}
+          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-app:latest
