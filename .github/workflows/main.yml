@@ -38,7 +38,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_TOKEN}}
       - name: Build images
-        run: docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db .
+        run: |
+          docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db .
+          docker push mbza/dyno-nuggets-db:latest
       - name: Push db
         uses: docker/build-push-action@v3
         with:
