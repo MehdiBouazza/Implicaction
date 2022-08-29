@@ -41,7 +41,7 @@ jobs:
         run: docker-compose -f docker-compose.build-prod.yml build
       - name: Push db
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-db:latest
+          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-db
       - name: Push app
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME}}/dyno-nuggets-app
