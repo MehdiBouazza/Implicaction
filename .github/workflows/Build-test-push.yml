@@ -24,22 +24,22 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: Docker login
-        uses: actions/checkout@v2
+    -  uses: actions/checkout@v2
         with:
           fetch-depth: 0 
-        env:
-          username: ${{secrets.DOCKER_USERNAME}}
-          password: ${{secrets.DOCKER_TOKEN}}
-        run: |
-          docker login -u $secrets.DOCKER_USERNAME -p $secrets.DOCKER_TOKEN
-      - name: Build db
-        run: |
-          docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db .
-      - name: Build spring
-        run: |
-          docker build -f Dockerfiles/Dockerfile-spring -t mbza/dyno-nuggets-spring .
-      - name: Push images
-        run: |
-          docker push mbza/dyno-nuggets-db
-          docker push mbza/dyno-nuggets-spring
+    - name: docker login
+      env:
+        username: ${{secrets.DOCKER_USERNAME}}
+        password: ${{secrets.DOCKER_TOKEN}}
+      run: |
+        docker login -u $secrets.DOCKER_USERNAME -p $secrets.DOCKER_TOKEN
+    - name: Build db
+      run: |
+        docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db .
+    - name: Build spring
+      run: |
+        docker build -f Dockerfiles/Dockerfile-spring -t mbza/dyno-nuggets-spring .
+    - name: Push images
+      run: |
+        docker push mbza/dyno-nuggets-db
+        docker push mbza/dyno-nuggets-spring
