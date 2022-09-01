@@ -25,18 +25,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: docker login
-      env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build db
       run: |
         docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db .
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USER }}   
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: mbza/dyno-nuggets-db
+        tags: latest
     - name: Build spring
       run: |
         docker build -f Dockerfiles/Dockerfile-spring -t mbza/dyno-nuggets-spring .
+    - name: docker login & push
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USER }}   
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: mbza/dyno-nuggets-spring
+        tags: latest
     - name: Push images
       run: |
         docker push mbza/dyno-nuggets-db
