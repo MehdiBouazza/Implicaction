@@ -35,9 +35,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and Push db
         run: |
-          docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db .
+          docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db:$(date +'%Y-%m-%d') .
           docker push mbza/dyno-nuggets-db:$(date +'%Y-%m-%d')
       - name: Build and Push spring
         run: |
-          docker build -f Dockerfiles/Dockerfile-spring -t mbza/dyno-nuggets-app .
+          docker build -f Dockerfiles/Dockerfile-spring -t mbza/dyno-nuggets-app:$(date +'%Y-%m-%d') .
           docker push mbza/dyno-nuggets-app:$(date +'%Y-%m-%d')
