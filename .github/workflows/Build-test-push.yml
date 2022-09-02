@@ -1,4 +1,4 @@
-name: Workflow Maven
+name: Workflow Test Build Push
 
 on:
   push:
