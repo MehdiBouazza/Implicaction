@@ -33,11 +33,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: SetDateTimeTag
+        run: |
+          echo "time=$(date +%s)" >> $GITHUB_ENV
       - name: Build and Push db
         run: |
-          docker build -f Dockerfiles/Dockerfile-mysql -t mbza/dyno-nuggets-db:$(date +'%Y-%m-%d') .
-          docker push mbza/dyno-nuggets-db:$(date +'%Y-%m-%d')
+          docker build -f Dockerfiles/Dockerfile-mysql . -t mbza/dyno-nuggets-db:latest -t mbza/dyno-nuggets-db:$time
+          docker push mbza/dyno-nuggets-db:latest
+          docker push mbza/dyno-nuggets-db:$time
       - name: Build and Push spring
         run: |
-          docker build -f Dockerfiles/Dockerfile-spring -t mbza/dyno-nuggets-app:$(date +'%Y-%m-%d') .
-          docker push mbza/dyno-nuggets-app:$(date +'%Y-%m-%d')
+          docker build -f Dockerfiles/Dockerfile-spring . -t mbza/dyno-nuggets-app:latest -t mbza/dyno-nuggets-app:$time 
+          docker push mbza/dyno-nuggets-app:latest
+          docker push mbza/dyno-nuggets-app:$time
