@@ -21,10 +21,7 @@ services:
       - localstack:/tmp/localstack
       - "/var/run/docker.sock:/var/run/docker.sock"
   db:
-    build:
-      context: .
-      dockerfile: Dockerfiles/Dockerfile-mysql
-    #image: dyno-nuggets-db:latest
+    image: mbza/dyno-nuggets-db:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 'password'
@@ -38,10 +35,7 @@ services:
   spring:
     depends_on: ["db"]
     restart: always
-    #image: dyno-nuggets-app:latest
-    build:
-      context: .
-      dockerfile: Dockerfiles/Dockerfile-spring
+    image: mbza/dyno-nuggets-app:latest
     environment:
       DB_URI: mysql://db:3306/implicaction
       DB_USER: root
