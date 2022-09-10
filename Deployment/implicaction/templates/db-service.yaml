@@ -8,6 +8,7 @@ spec:
   ports:
     - name: "3306"
       port: 3306
+      targetPort: 3306
   selector:
     io.kompose.service: db
 status:

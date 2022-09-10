@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    io.kompose.service: {{ .Values.global.env }}-spring
+  name: {{ .Values.global.env }}-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{ .Values.global.env }}-spring
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: {{ .Values.global.env }}-spring
+    spec:
+      containers:
+        - env:
+            - name: APP_URL
+              value: http://localhost:8080
+            - name: AWS_ACCESS_KEY
+            - name: AWS_REGION
+            - name: AWS_SECRET_KEY
+            - name: CONTACT_EMAIL
+              value: contact@implicaction.eu
+            - name: DB_PASS
+              value: password
+            - name: DB_URI
+              value: mysql://db:3306/implicaction
+            - name: DB_USER
+              value: root
+            - name: KS_NAME
+              value: implicaction
+            - name: KS_PASSWORD
+              value: .fxG3KPB.
+            - name: KS_PATH
+              value: /implicaction.jks
+            - name: SMTP_HOST
+              value: smtp.mailtrap.io
+            - name: SMTP_PASS
+              value: 6b3338fa1cc8b9
+            - name: SMTP_PORT
+              value: "2525"
+            - name: SMTP_USER
+              value: 5c354372a1d5da
+          image: {{ .Values.spring.image.name }}:{{ .Values.spring.image.tag }}
+          name: {{ .Values.spring.name }}
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

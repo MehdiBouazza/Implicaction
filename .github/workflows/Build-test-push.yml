@@ -43,6 +43,6 @@ jobs:
           docker push mbza/dyno-nuggets-db:$time
       - name: Build and Push spring
         run: |
-          docker build -f Dockerfiles/Dockerfile-spring . -t mbza/dyno-nuggets-app:latest -t mbza/dyno-nuggets-app:$time 
-          docker push mbza/dyno-nuggets-app:latest
-          docker push mbza/dyno-nuggets-app:$time
+          docker build -f Dockerfiles/Dockerfile-spring . -t mbza/dyno-nuggets-spring:latest -t mbza/dyno-nuggets-spring:$time 
+          docker push mbza/dyno-nuggets-spring:latest
+          docker push mbza/dyno-nuggets-spring:$time
