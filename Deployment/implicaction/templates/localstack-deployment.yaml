@@ -26,6 +26,13 @@ spec:
               value: s3
           image: localstack/localstack:latest
           name: localstack
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "500Mi"
+            limits:
+              cpu: "1000m"
+              memory: "600Mi"
           ports:
             - containerPort: 4566
             - containerPort: 4567
