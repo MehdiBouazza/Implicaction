@@ -1,0 +1,10 @@
+global:
+  env: "implicaction-prod"
+  dockerhubkey: "dockerhubkey"
+adminer:
+spring:
+  name: "webapp"
+  image:
+    name: "mbza/dyno-nuggets-spring"
+    tag: "latest"
+db:
