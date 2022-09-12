@@ -21,17 +21,3 @@ spec:
           resources: {}
       restartPolicy: Always
 status: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Values.global.env }}-adminer
-spec:
-  ports:
-    - name: "9030"
-      port: 9030
-      targetPort: 8080
-  selector:
-    io.kompose.service: {{ .Values.global.env }}-adminer
-status:
-  loadBalancer: {}
