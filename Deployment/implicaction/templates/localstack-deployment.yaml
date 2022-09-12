@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: localstack
-  name: localstack
+    io.kompose.service: {{ .Values.global.env }}-localstack
+  name: {{ .Values.global.env }}-localstack
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: localstack
+      io.kompose.service: {{ .Values.global.env }}-localstack
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        io.kompose.service: localstack
+        io.kompose.service: {{ .Values.global.env }}-localstack
     spec:
       containers:
         - env:
@@ -25,7 +25,7 @@ spec:
             - name: SERVICES
               value: s3
           image: localstack/localstack:latest
-          name: localstack
+          name: {{ .Values.global.env }}-localstack
           resources:
             requests:
               cpu: "500m"
@@ -55,15 +55,15 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /tmp/localstack
-              name: localstack
+              name: {{ .Values.global.env }}-localstack
             - mountPath: /var/run/docker.sock
-              name: localstack-claim1
+              name: {{ .Values.global.env }}-localstack-claim1
       restartPolicy: Always
       volumes:
-        - name: localstack
+        - name: {{ .Values.global.env }}-localstack
           persistentVolumeClaim:
-            claimName: localstack
-        - name: localstack-claim1
+            claimName: {{ .Values.global.env }}-localstack
+        - name: {{ .Values.global.env }}-localstack-claim1
           persistentVolumeClaim:
-            claimName: localstack-claim1
+            claimName: {{ .Values.global.env }}-localstack-claim1
 status: {}

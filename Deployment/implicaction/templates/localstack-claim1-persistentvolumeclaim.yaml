@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: localstack-claim1
-  name: localstack-claim1
+    io.kompose.service: {{ .Values.global.env }}-localstack-claim1
+  name: {{ .Values.global.env }}-localstack-claim1
 spec:
   accessModes:
     - ReadWriteOnce

@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: localstack
-  name: localstack
+    io.kompose.service: {{ .Values.global.env }}-localstack
+  name: {{ .Values.global.env }}-localstack
 spec:
   ports:
     - name: "4566"
@@ -61,6 +61,6 @@ spec:
       port: 4583
       targetPort: 4583
   selector:
-    io.kompose.service: localstack
+    io.kompose.service: {{ .Values.global.env }}-localstack
 status:
   loadBalancer: {}

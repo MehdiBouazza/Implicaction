@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: my-db
-  name: my-db
+    io.kompose.service: {{ .Values.global.env }}-my-db
+  name: {{ .Values.global.env }}-my-db
 spec:
   accessModes:
     - ReadWriteOnce
